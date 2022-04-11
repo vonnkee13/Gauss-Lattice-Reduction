@@ -1,0 +1,8 @@
+def gramschmidt(M): # M is input matrix whose rows are the vectors
+    G = [M.rows()[0]]
+    for i in range(1,len(M.rows())):
+        temp = M.rows()[i]
+        for j in range(i):
+            temp=temp-(M.rows()[i].dot_product(G[j]) /G[j].dot_product(G[j]))*G[j]
+        G.append(temp)
+    return Matrix(G), M * Matrix(G)^-1
