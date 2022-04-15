@@ -1,0 +1,8 @@
+def qarybasis(A,q):
+    m = len(A.columns())
+    n = len(A.rows())
+    qI = q*matrix.identity(m)
+    M = matrix(n+m,m,0)
+    M.set_block(0,0,qI)
+    M.set_block(m,0,A)
+    return M.hermite_form()[:m,:] # return an mxm matrix whose rows are the basis vectors of q-ary lattice lambda_q(A)
